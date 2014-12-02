@@ -137,10 +137,22 @@ body {
 
 .img-responsive {
 	margin: auto;
-	border-radius: 40px;
+	/*border-radius: 40px;*/
 	border-style: solid;
 	border-color: #6400B0;
-	border-width: 7px;	
+	border-width: 3px;	
+}
+
+.img-plain {
+	margin: auto;
+	/*border-radius: 40px;*/
+	border-style: solid;
+	border-color: #640000;
+	border-width: 3px;	
+	display: block;
+	width: 100% \9;
+	max-width: 100%;
+	height: auto;
 }
 
 .img-responsive:hover {
@@ -226,6 +238,10 @@ body {
 .navbar-default .navbar-nav>li>a {
 	color: #FFF;
 	font-size: 16px;
+}
+
+.appstamp {
+	margin-left: 1.5em;
 }
 
 .btn-primary {
