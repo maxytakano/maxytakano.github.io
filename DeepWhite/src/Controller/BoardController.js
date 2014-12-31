@@ -2,21 +2,36 @@ var BoardController = cc.Scene.extend({
 	boardModel:null,
 	boardView:null,
 	clickedAtCallback:null,
+	turn:null,
+	playing:null,
 	onEnter:function () {
 		this._super();
+
+		// Initialize variables
+		this.playing = {
+			'BLACK': 1,
+			'WHITE': -1
+		};
+		this.turn = this.playing.BLACK;
 
 		// The view notifies the controller of user click location,
 		// by calling back this function.
 		// Note: not a class, don't use new
 		this.clickedAtCallback = function(x, y) {
 			if (x == 0 || y == 0 || x == this.boardModel.size + 1 || y == this.boardModel.size + 1) {
-				//console.log("off the board");
+				console.log("off the board");
 			}
 
-			//this.boardModel.play(x,y,1,false);
+			// Check who is playing (white or black)
+			if (this.turn == this.playing.BLACK) {
+				this.boardModel.play(x-1,y-1,1,false);
+				this.turn = this.playing.WHITE;
+			} else if (this.turn == this.playing.WHITE) {
+				this.boardModel.play(x-1,y-1,-1,false);
+				this.turn = this.playing.BLACK;
+			}
 
-			this.boardModel.play(x-1,y-1,1,false);
-			//console.log("clicked at", x, y)
+
 
 			// after updating the board, update the view
 			// TODO: (should happen via notification from model?)
