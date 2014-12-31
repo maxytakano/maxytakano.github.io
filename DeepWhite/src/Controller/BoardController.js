@@ -18,8 +18,15 @@ var BoardController = cc.Scene.extend({
 		// by calling back this function.
 		// Note: not a class, don't use new
 		this.clickedAtCallback = function(x, y) {
+			// handle off board clicks (do nothing)
 			if (x == 0 || y == 0 || x == this.boardModel.size + 1 || y == this.boardModel.size + 1) {
 				console.log("off the board");
+				return;
+			}
+			// handle stone and suicide clicks (do nothing)
+			if (this.boardModel.getStone(x-1,y-1) != 0) {
+				console.log("clicking a stone");
+				return;
 			}
 
 			// Check who is playing (white or black)
