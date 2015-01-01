@@ -3,8 +3,8 @@ var res = {
     whiteStone_png : "res/whiteStone.png",
     emptyTile_png : "res/emptyTile.png",
     woodBackground_png : "res/woodBackground.png",
-    arial_14_fnt : 'res/arial-14.fnt',
-    arial_14_png : 'res/arial-14.png'
+    board9x9_png : "res/boards/board9x9.png",
+    grid9x9_png : "res/boards/grid9x9.png"
 };
 
 var g_resources = [];

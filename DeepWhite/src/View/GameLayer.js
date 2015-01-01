@@ -1,9 +1,15 @@
+
+// TODO: clean up board swapping, create a function that redoes the sprite array
+// TODO: and call that instead in the init and in the swap function.
 var GameLayer = cc.Layer.extend({
     boardModel:null,
     boardController:null,
     clickCallback:null,
     spriteArray:null,
     tileSize:null,
+    gridOn:null,
+    boardSize:null,
+    winSize:null,
     ctor:function (model, callback) {
         this._super();
         this.init(model, callback);
@@ -11,6 +17,7 @@ var GameLayer = cc.Layer.extend({
     init:function (model, callback) {
         this._super();
 
+        this.gridOn = true;
         // Initialize the click handler
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -24,26 +31,30 @@ var GameLayer = cc.Layer.extend({
         this.clickCallback = callback;
 
         // Get the screen size
-        var winSize = cc.director.getWinSize();
+        this.winSize = cc.director.getWinSize();
 
 
         this.boardModel = model;
-        var boardSize = this.boardModel.size;
+        this.boardSize = this.boardModel.size;
+
         // Divide the screen into board size + 2 tiles
-        this.tileSize = (winSize.width * 0.75) / (boardSize + 2);
+
+        this.tileSize = this.winSize.height / (this.boardSize + 2);
+        //this.tileSize = winSize.height / boardSize;
+
 
 
         // Initialize the 2d sprite tile array
-        this.spriteArray = new Array(boardSize);
-        for (var i = 0; i < boardSize; i++) {
-            this.spriteArray[i] = new Array(boardSize);
+        this.spriteArray = new Array(this.boardSize);
+        for (var i = 0; i < this.boardSize; i++) {
+            this.spriteArray[i] = new Array(this.boardSize);
         }
 
 
         // Initialize each sprite tile to be empty and assign its position/scale
         // Finally add it as a child
-        for (var x = 0; x < boardSize; x++) {
-            for (var y = 0; y < boardSize; y++) {
+        for (var x = 0; x < this.boardSize; x++) {
+            for (var y = 0; y < this.boardSize; y++) {
                 this.spriteArray[x][y] = new cc.Sprite(res.emptyTile_png);
                 this.spriteArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5));
                 this.spriteArray[x][y].setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
@@ -52,9 +63,48 @@ var GameLayer = cc.Layer.extend({
         }
 
 
+        this.gridToggle();
 
     },
-
+    gridToggle:function() {
+        if (this.gridOn) {
+            // turn grid off
+            this.tileSize = this.winSize.height / this.boardSize;
+            // Initialize the 2d sprite tile array
+            this.spriteArray = new Array(this.boardSize);
+            for (var i = 0; i < this.boardSize; i++) {
+                this.spriteArray[i] = new Array(this.boardSize);
+            }
+            for (var x = 0; x < this.boardSize; x++) {
+                for (var y = 0; y < this.boardSize; y++) {
+                    this.spriteArray[x][y] = new cc.Sprite(res.emptyTile_png);
+                    this.spriteArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 0.5), (this.tileSize * y) + (this.tileSize * 0.5));
+                    this.spriteArray[x][y].setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
+                    this.addChild(this.spriteArray[x][y]);
+                }
+            }
+            this.gridOn = false;
+        } else {
+            // turn grid on
+            this.tileSize = this.winSize.height / (this.boardSize + 2);
+            // Initialize the 2d sprite tile array
+            this.spriteArray = new Array(this.boardSize);
+            for (var i = 0; i < this.boardSize; i++) {
+                this.spriteArray[i] = new Array(this.boardSize);
+            }
+            // Initialize each sprite tile to be empty and assign its position/scale
+            // Finally add it as a child
+            for (var x = 0; x < this.boardSize; x++) {
+                for (var y = 0; y < this.boardSize; y++) {
+                    this.spriteArray[x][y] = new cc.Sprite(res.emptyTile_png);
+                    this.spriteArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5));
+                    this.spriteArray[x][y].setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
+                    this.addChild(this.spriteArray[x][y]);
+                }
+            }
+            this.gridOn = true;
+        }
+    },
     // Update the view
     update:function() {
 
@@ -91,27 +141,17 @@ var GameLayer = cc.Layer.extend({
     // Called when click/touch is lifted
     onTouchEnded:function (touch, event) {
         var target = event.getCurrentTarget();
-        //cc.assert(target._state == PADDLE_STATE_GRABBED, "Paddle - Unexpected state!");
-        //target._state = PADDLE_STATE_UNGRABBED;
 
+        // Check if the grid is on or off
+        var offset;
+        if (target.gridOn) {
+            offset = 1;
+        } else {
+            offset = 0;
+        }
 
-        var x = Math.floor(touch.getLocation().x / target.tileSize) - 1;
-        var y = Math.floor(touch.getLocation().y / target.tileSize) - 1;
-
-        // TODO: try to find a better way of detecting which tile is clicked/touched
-        //for (x = 0; x < target.boardModel.size; x++) {
-        //    for (y = 0; y < target.boardModel.size; y++) {
-        //        //if ( cc.rectContainsPoint(target.spriteArray[x][y].rect(), touch.getLocation()) ) {
-        //        //    console.log("position", x, y);
-        //        //}
-        //        //console.log(cc.rectContainsPoint(), cc.p(100, 300)));
-        //
-        //        console.log(target.spriteArray[x][y].getPosition().x);
-        //        if ( cc.rectContainsPoint(target.spriteArray[x][y].getTextureRect(),touch.getLocation()) ) {
-        //            console.log("position", x, y);
-        //        }
-        //    }
-        //}
+        var x = Math.floor(touch.getLocation().x / target.tileSize) - offset;
+        var y = Math.floor(touch.getLocation().y / target.tileSize) - offset;
 
         // Notify the controller of the click's location
         target.clickCallback(x, y);
