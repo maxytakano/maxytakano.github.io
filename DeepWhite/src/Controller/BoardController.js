@@ -2,41 +2,40 @@ var BoardController = cc.Scene.extend({
 	boardModel:null,
 	boardView:null,
 	clickedAtCallback:null,
-	turn:null,
-	playing:null,
 	onEnter:function () {
 		this._super();
 
 		// Initialize variables
-		this.playing = {
-			'BLACK': 1,
-			'WHITE': -1
-		};
-		this.turn = this.playing.BLACK;
+		//this.playing = {
+		//	'BLACK': 1,
+		//	'WHITE': -1
+		//};
+		//this.turn = this.playing.BLACK;
 
 		// The view notifies the controller of user click location,
 		// by calling back this function.
 		// Note: not a class, don't use new
 		this.clickedAtCallback = function(x, y) {
-			// handle off board clicks (do nothing)
-			if (x == 0 || y == 0 || x == this.boardModel.size + 1 || y == this.boardModel.size + 1) {
-				console.log("off the board");
-				return;
-			}
-			// handle stone and suicide clicks (do nothing)
-			if (this.boardModel.getStone(x-1,y-1) != 0) {
-				console.log("clicking a stone");
+
+			var playAttempt = this.boardModel.isValidWithCode(x,y,this.boardModel.turn);
+
+			// Check if playAttempt was valid  (equals true, not a number)
+			if (typeof playAttempt != "number") {
+				console.log("valid move, playing at:", x, y);
+
+				// Plays a move on the board, and switches the turn
+				// 3rd param is color to play (use current turn)
+				// 4th param is whether to actually play or just test the move
+				this.boardModel.play(x, y, this.boardModel.turn, false);
+			} else {
+				// Handle invalid move based on error code
+				console.log("invalid move at:", x, y);
+				
+
 				return;
 			}
 
-			// Check who is playing (white or black)
-			if (this.turn == this.playing.BLACK) {
-				this.boardModel.play(x-1,y-1,1,false);
-				this.turn = this.playing.WHITE;
-			} else if (this.turn == this.playing.WHITE) {
-				this.boardModel.play(x-1,y-1,-1,false);
-				this.turn = this.playing.BLACK;
-			}
+
 
 
 

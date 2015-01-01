@@ -41,8 +41,8 @@ var GameLayer = cc.Layer.extend({
 
         // Initialize each sprite tile to be empty and assign its position/scale
         // Finally add it as a child
-        for (x = 0; x < boardSize; x++) {
-            for (y = 0; y < boardSize; y++) {
+        for (var x = 0; x < boardSize; x++) {
+            for (var y = 0; y < boardSize; y++) {
                 this.spriteArray[x][y] = new cc.Sprite(res.emptyTile_png);
                 this.spriteArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5));
                 this.spriteArray[x][y].setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
@@ -57,8 +57,8 @@ var GameLayer = cc.Layer.extend({
     // Update the view
     update:function() {
 
-        for (x = 0; x < this.boardModel.size; x++) {
-            for (y = 0; y < this.boardModel.size; y++) {
+        for (var x = 0; x < this.boardModel.size; x++) {
+            for (var y = 0; y < this.boardModel.size; y++) {
 
                 // TODO Change 1, 0, -1 to constants
                 if (this.boardModel.getStone(x, y) == 1) {
@@ -94,8 +94,8 @@ var GameLayer = cc.Layer.extend({
         //target._state = PADDLE_STATE_UNGRABBED;
 
 
-        var x = Math.floor(touch.getLocation().x / target.tileSize)
-        var y = Math.floor(touch.getLocation().y / target.tileSize)
+        var x = Math.floor(touch.getLocation().x / target.tileSize) - 1;
+        var y = Math.floor(touch.getLocation().y / target.tileSize) - 1;
 
         // TODO: try to find a better way of detecting which tile is clicked/touched
         //for (x = 0; x < target.boardModel.size; x++) {

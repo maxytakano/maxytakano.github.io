@@ -331,7 +331,7 @@ var BoardModel = cc.Class.extend({
         }
 
         if(noplay) {
-            return 0;
+            return true;
         }
 
 
@@ -369,6 +369,15 @@ var BoardModel = cc.Class.extend({
     },
 
     /*
+     * Added by Max
+     * checks validity of the move, returns true if the move is valid
+     * otherwise returns the error code of the invalid move
+     */
+    isValidWithCode: function(x,y,c) {
+        return this.play(x,y,c,true);
+    },
+
+    /*
      * Finds out validity of the move.
      *
      * @param {number} x coordinate
@@ -376,7 +385,6 @@ var BoardModel = cc.Class.extend({
      * @param {(WGo.B|WGo.W)} c color
      * @return {boolean} true if move can be played.
      */
-
     isValid: function(x,y,c) {
         return typeof this.play(x,y,c,true) != "number";
     },
