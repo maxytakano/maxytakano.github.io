@@ -16,6 +16,7 @@
         "src/Model/BoardModel.js",
         "src/Controller/BoardController.js",
         "src/View/BackgroundLayer.js",
+        "src/View/GridLayer.js",
         "src/View/GameLayer.js",
         "src/View/GUILayer.js"
     ]

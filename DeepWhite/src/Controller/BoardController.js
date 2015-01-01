@@ -5,13 +5,6 @@ var BoardController = cc.Scene.extend({
 	onEnter:function () {
 		this._super();
 
-		// Initialize variables
-		//this.playing = {
-		//	'BLACK': 1,
-		//	'WHITE': -1
-		//};
-		//this.turn = this.playing.BLACK;
-
 		// The view notifies the controller of user click location,
 		// by calling back this function.
 		// Note: not a class, don't use new
@@ -46,6 +39,7 @@ var BoardController = cc.Scene.extend({
 
 			// after updating the board, update the view
 			// TODO: (should happen via notification from model?)
+			// TODO: make a function to update all relevant parts of the view (fx, hud)
 			this.boardView.update();
 		}.bind(this);
 
@@ -53,10 +47,27 @@ var BoardController = cc.Scene.extend({
 		// initialize the Model
 		this.boardModel = new BoardModel(19, "KO");
 
-		// initialize the View
+		/* Initialize the View */
+		// 1. Background Layer
 		this.addChild(new BackgroundLayer());
+
+		// 2. Influence Layer
+
+		// 3. Grid Layer
+		this.addChild(new GridLayer(this.boardModel.size));
+
+		// 4. UnderFX Layer
+
+		// 5. Game Layer
 		this.boardView = new GameLayer(this.boardModel, this.clickedAtCallback);
 		this.addChild(this.boardView);
+
+		// 6. OverFX Layer
+
+		/* Initialize the GUI */
+		// 1. GUI Background Layer
+
+		// 2. GUI Layer
 		//this.addChild(new GUILayer());
 
 	}
