@@ -26,14 +26,14 @@ var GridLayer = cc.Layer.extend({
                 1.1, cc.color(0, 0, 0, 255)
             );
         }
-        //
-        //for (var y = 0; y < boardSize; y++) {
-        //    draw.drawSegment(
-        //        cc.p( (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5)),
-        //        cc.p( localSize - (this.tileSize * 1.5),  (this.tileSize * y) + (this.tileSize * 1.5)),
-        //        1.1, cc.color(0, 0, 0, 255)
-        //    );
-        //}
+
+        for (var y = 0; y < boardSize; y++) {
+            draw.drawSegment(
+                cc.p( (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5)),
+                cc.p( localSize - (this.tileSize * 1.5),  (this.tileSize * y) + (this.tileSize * 1.5)),
+                1.1, cc.color(0, 0, 0, 255)
+            );
+        }
 
 
 
