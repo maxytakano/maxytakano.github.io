@@ -45,7 +45,7 @@ var BoardController = cc.Scene.extend({
 
 
 		// initialize the Model
-		this.boardModel = new BoardModel(19, "KO");
+		this.boardModel = new BoardModel(15, "KO");
 
 		/* Initialize the View */
 		// 1. Background Layer
