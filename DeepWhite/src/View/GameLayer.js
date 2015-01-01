@@ -39,6 +39,7 @@ var GameLayer = cc.Layer.extend({
             this.spriteArray[i] = new Array(boardSize);
         }
 
+
         // Initialize each sprite tile to be empty and assign its position/scale
         // Finally add it as a child
         for (var x = 0; x < boardSize; x++) {

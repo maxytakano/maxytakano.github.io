@@ -34,18 +34,14 @@ var BoardController = cc.Scene.extend({
 			}
 
 
-
-
-
 			// after updating the board, update the view
 			// TODO: (should happen via notification from model?)
 			// TODO: make a function to update all relevant parts of the view (fx, hud)
 			this.boardView.update();
 		}.bind(this);
 
-
 		// initialize the Model
-		this.boardModel = new BoardModel(15, "KO");
+		this.boardModel = new BoardModel(19, "KO");
 
 		/* Initialize the View */
 		// 1. Background Layer
