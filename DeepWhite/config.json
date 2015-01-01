@@ -3,7 +3,7 @@
     "isLandscape": true,
     "isWindowTop": false,
     "name": "DeepWhite",
-    "width": 600,
+    "width": 800,
     "height": 600,
     "entry": "main.js",
     "consolePort": 6050,

@@ -22,16 +22,21 @@ var BoardController = cc.Scene.extend({
 			// Check if playAttempt was valid  (equals true, not a number)
 			if (typeof playAttempt != "number") {
 				console.log("valid move, playing at:", x, y);
-
 				// Plays a move on the board, and switches the turn
 				// 3rd param is color to play (use current turn)
 				// 4th param is whether to actually play or just test the move
 				this.boardModel.play(x, y, this.boardModel.turn, false);
 			} else {
-				// Handle invalid move based on error code
-				console.log("invalid move at:", x, y);
-				
-
+				// Handle invalid move based on error code and return
+				if (playAttempt == 1) {
+					console.log("invalid move: off the board");
+				} else if (playAttempt == 2) {
+					console.log("invalid move: already a stone there!");
+				} else if (playAttempt == 3) {
+					console.log("invalid move: suicide is not allowed");
+				} else if (playAttempt == 4) {
+					console.log("invalid move: KO! (repeating positions not allowed)");
+				}
 				return;
 			}
 

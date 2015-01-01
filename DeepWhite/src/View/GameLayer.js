@@ -30,7 +30,7 @@ var GameLayer = cc.Layer.extend({
         this.boardModel = model;
         var boardSize = this.boardModel.size;
         // Divide the screen into board size + 2 tiles
-        this.tileSize = winSize.width / (boardSize + 2);
+        this.tileSize = (winSize.width * 0.75) / (boardSize + 2);
 
 
         // Initialize the 2d sprite tile array
