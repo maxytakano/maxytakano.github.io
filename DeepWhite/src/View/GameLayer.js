@@ -50,7 +50,6 @@ var GameLayer = cc.Layer.extend({
             this.spriteArray[i] = new Array(this.boardSize);
         }
 
-
         // Initialize each sprite tile to be empty and assign its position/scale
         // Finally add it as a child
         for (var x = 0; x < this.boardSize; x++) {
@@ -62,11 +61,9 @@ var GameLayer = cc.Layer.extend({
             }
         }
 
-
-        this.gridToggle();
-
     },
     gridToggle:function() {
+        this.clearView();
         if (this.gridOn) {
             // turn grid off
             this.tileSize = this.winSize.height / this.boardSize;
@@ -103,6 +100,15 @@ var GameLayer = cc.Layer.extend({
                 }
             }
             this.gridOn = true;
+        }
+        this.update();
+    },
+    // Set all of the tiles to empty (useful for modifying and repainting board)
+    clearView:function() {
+        for (var x = 0; x < this.boardModel.size; x++) {
+            for (var y = 0; y < this.boardModel.size; y++) {
+                this.spriteArray[x][y].setTexture(res.emptyTile_png);
+            }
         }
     },
     // Update the view

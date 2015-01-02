@@ -1,9 +1,27 @@
 var BoardController = cc.Scene.extend({
 	boardModel:null,
-	boardView:null,
+	gridLayer:null,
+	gameLayer:null,
 	clickedAtCallback:null,
+	notationCallback:null,
+	// Side bar
+	sideGUILayer:null,
 	onEnter:function () {
 		this._super();
+
+		// The side GUI notifies the controller that the grid
+		// toggle button was pressed by calling back this function
+		this.notationCallback = function() {
+			/* toggle the view's grid */
+			// 1. Update Influence Layer
+			// 2. Update Grid layer
+			this.gridLayer.gridToggle();
+			// 3. Update UnderFX layer
+			// 4. Update Game Layer
+			this.gameLayer.gridToggle();
+			// 5. Update OverFX Layer
+
+		}.bind(this);
 
 		// The view notifies the controller of user click location,
 		// by calling back this function.
@@ -14,7 +32,7 @@ var BoardController = cc.Scene.extend({
 
 			// Check if playAttempt was valid  (equals true, not a number)
 			if (typeof playAttempt != "number") {
-				console.log("valid move, playing at:", x, y);
+				//console.log("valid move, playing at:", x, y);
 				// Plays a move on the board, and switches the turn
 				// 3rd param is color to play (use current turn)
 				// 4th param is whether to actually play or just test the move
@@ -37,7 +55,7 @@ var BoardController = cc.Scene.extend({
 			// after updating the board, update the view
 			// TODO: (should happen via notification from model?)
 			// TODO: make a function to update all relevant parts of the view (fx, hud)
-			this.boardView.update();
+			this.update();
 		}.bind(this);
 
 		// initialize the Model
@@ -50,21 +68,29 @@ var BoardController = cc.Scene.extend({
 		// 2. Influence Layer
 
 		// 3. Grid Layer
-		this.addChild(new GridLayer(this.boardModel.size));
+		this.gridLayer = new GridLayer(this.boardModel.size);
+		this.addChild(this.gridLayer);
 
 		// 4. UnderFX Layer
 
 		// 5. Game Layer
-		this.boardView = new GameLayer(this.boardModel, this.clickedAtCallback);
-		this.addChild(this.boardView);
+		this.gameLayer = new GameLayer(this.boardModel, this.clickedAtCallback);
+		this.addChild(this.gameLayer);
 
 		// 6. OverFX Layer
 
-		/* Initialize the GUI */
-		// 1. GUI Background Layer
+		/* Initialize the side bar */
+		// 1. Side bar Background Layer
+		this.addChild(new SideBackLayer());
 
-		// 2. GUI Layer
-		//this.addChild(new GUILayer());
+		// 2. Side bar GUI Layer
+		this.sideGUILayer = new SideGUILayer(this.boardModel, this.notationCallback);
+		this.addChild(this.sideGUILayer);
+
+	},
+	update:function () {
+		this.gameLayer.update();
+		this.sideGUILayer.update();
 
 	}
 

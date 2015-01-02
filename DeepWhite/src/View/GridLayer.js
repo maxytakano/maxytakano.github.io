@@ -4,6 +4,7 @@
 
 var GridLayer = cc.Layer.extend({
     gridOn:null,
+    spriteBG:null,
     ctor:function (boardSize) {
         this._super();
         this.init(boardSize);
@@ -11,32 +12,33 @@ var GridLayer = cc.Layer.extend({
 
     init:function (boardSize) {
         this._super();
-
-        //copy9x9
+        this.gridOn = true;
 
         var winSize = cc.director.getWinSize();
         var localSize = winSize.height;
 
-        // Textured background of n depth
-        var n = 1;
-        for (var x = 0; x < n; x++ ) {
-        	for (var y = 0; y < n; y ++) {
-        		//create the background image and position it at the center of screen
-        		var centerPos = cc.p(
-        			(localSize / (2*n)) + ((localSize / n) * x),
-        			(localSize / (2*n)) + ((localSize / n) * y)
-        		);
+
+        //create the background image and position it at the center of screen
+        var centerPos = cc.p(localSize/2, localSize/2);
+        this.spriteBG = new cc.Sprite(res.grid9x9_png);
+
+        this.spriteBG.setScaleX( localSize / this.spriteBG.getContentSize().width );
+        this.spriteBG.setScaleY( localSize / this.spriteBG.getContentSize().height );
+
+        this.spriteBG.setPosition(centerPos);
+        this.addChild(this.spriteBG);
 
 
-        		var spriteBG = new cc.Sprite(res.board9x9_png);
-
-        		spriteBG.setScaleX( (localSize / spriteBG.getContentSize().width) / n);
-        		spriteBG.setScaleY( (localSize / spriteBG.getContentSize().height) / n);
-
-        		spriteBG.setPosition(centerPos);
-        		this.addChild(spriteBG);
-        	}
+    },
+    gridToggle:function() {
+        if (this.gridOn) {
+            // Turn grid off
+            this.spriteBG.setTexture(res.board9x9_png);
+            this.gridOn = false;
+        } else {
+            // Turn grid on
+            this.spriteBG.setTexture(res.grid9x9_png);
+            this.gridOn = true;
         }
-
     }
 });
