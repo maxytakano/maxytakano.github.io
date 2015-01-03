@@ -25,6 +25,9 @@ var res = {
     // Side bar buttons
     notationOFF_png : "res/notationOFF.png",
     notationON_png : "res/notationON.png",
+    menuButton_png : "res/menuButton.png",
+    menuButton_s_png : "res/menuButton_s.png",
+
     // Board grids with and without letters/numbers
     board9x9_png : "res/boards/board9x9.png",
     grid9x9_png : "res/boards/grid9x9.png",

@@ -1,5 +1,5 @@
 var MenuLayer = cc.Layer.extend({
-	buttons:null,
+	buttonRectangles:null,
 	buttonSprites:null,
 	selectedBoard:null,
 	boardNames:null,
@@ -55,13 +55,8 @@ var MenuLayer = cc.Layer.extend({
 		this.addChild(menu);
 
 		//7. Add board selection label
-		// font definition
 		var greenColor = cc.color(132, 182, 121);
 		var blackColor = cc.color(0, 0, 0);
-
-
-
-		// old
 		var selectLabel = new cc.LabelTTF("Select A Board Size", "Helvetica", 48);
 		selectLabel.setFontFillColor(blackColor);
 		selectLabel.setPosition(cc.p(winsize.width/2, winsize.height * 0.57));
@@ -98,7 +93,7 @@ var MenuLayer = cc.Layer.extend({
 		var start = (splitNumber * sizeX) + (splitNumber * spacing);
 
 		for (var i = 0; i < boards; i++) {
-			var testSprite = new cc.Sprite(this.boardNames[i]);		// TODO try set this equal to setupSprite
+			var testSprite = new cc.Sprite(this.boardNames[i]);
 
 			testSprite.setPosition(winsize.width/2 - start + ((sizeX + spacing) * i), winsize.height * 0.4);
 			testSprite.setScale(scaleFactor);
