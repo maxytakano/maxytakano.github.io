@@ -14,14 +14,13 @@ var res = {
     select19x19_s_png : "res/menuButtons/select19x19_s.png",
 
     // Traditional play stones
-    blackStone_png : "res/blackStone.png",
-    whiteStone_png : "res/whiteStone.png",
-    emptyTile_png : "res/emptyTile.png",
+    blackStone_png : "res/blackStone3.png",
+    whiteStone_png : "res/whiteStone3.png",
+    emptyTile_png : "res/emptyTile3.png",
     // Board background
     woodBackground_png : "res/woodBackground.png",
     // Side bar background
     bamboo_png : "res/bamboo.png",
-    space_png : "res/space.png",
     // Side bar buttons
     notationOFF_png : "res/notationOFF.png",
     notationON_png : "res/notationON.png",
