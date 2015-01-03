@@ -2,8 +2,16 @@ var res = {
     // Menu background
     menuBack1_png : "res/menuBack1.png",
     // Menu buttons
-    menuPlay_png : "res/menuPlay.png",
-    menuPlayS_png : "res/menuPlayS.png",
+    menuPlay_png : "res/menuButtons/menuPlay.png",
+    menuPlayS_png : "res/menuButtons/menuPlayS.png",
+    select9x9_n_png : "res/menuButtons/select9x9_n.png",
+    select9x9_s_png : "res/menuButtons/select9x9_s.png",
+    select13x13_n_png : "res/menuButtons/select13x13_n.png",
+    select13x13_s_png : "res/menuButtons/select13x13_s.png",
+    select15x15_n_png : "res/menuButtons/select15x15_n.png",
+    select15x15_s_png : "res/menuButtons/select15x15_s.png",
+    select19x19_n_png : "res/menuButtons/select19x19_n.png",
+    select19x19_s_png : "res/menuButtons/select19x19_s.png",
 
     // Traditional play stones
     blackStone_png : "res/blackStone.png",

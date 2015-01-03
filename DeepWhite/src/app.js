@@ -2,6 +2,8 @@ var MenuLayer = cc.Layer.extend({
 	buttons:null,
 	buttonSprites:null,
 	selectedBoard:null,
+	boardNames:null,
+	selectedNames:null,
 	ctor : function(){
 		//1. call super class's ctor function
 		this._super();
@@ -52,16 +54,42 @@ var MenuLayer = cc.Layer.extend({
 		menu.setPosition(cc.p(winsize.width * 0.5, winsize.height * 0.75));
 		this.addChild(menu);
 
+		//7. Add board selection label
+		// font definition
+		var greenColor = cc.color(132, 182, 121);
+		var blackColor = cc.color(0, 0, 0);
+
+
+
+		// old
+		var selectLabel = new cc.LabelTTF("Select A Board Size", "Helvetica", 48);
+		selectLabel.setFontFillColor(blackColor);
+		selectLabel.setPosition(cc.p(winsize.width/2, winsize.height * 0.57));
+		selectLabel.enableStroke(greenColor, 3);
+		this.addChild(selectLabel);
+
 
 		// Create board selection Sprites
 		this.buttonSprites = [];	// Array to hold board button sprites
 		this.buttonRectangles = [];			// Array to hold board button bounding rectangles
 
 
+		this.boardNames = [
+			"res/menuButtons/select9x9_n.png",
+			"res/menuButtons/select13x13_n.png",
+			"res/menuButtons/select15x15_n.png",
+			"res/menuButtons/select19x19_n.png"
+		];
+		this.selectedNames = [
+			"res/menuButtons/select9x9_s.png",
+			"res/menuButtons/select13x13_s.png",
+			"res/menuButtons/select15x15_s.png",
+			"res/menuButtons/select19x19_s.png"
+		];
 		var boards = 4;		// Number of board options
 
-		var setupSprite = new cc.Sprite(res.blackStone_png);
-		setupSprite.setScale(0.3);
+		var setupSprite = new cc.Sprite(res.select13x13_n_png);
+		setupSprite.setScale(0.7);
 		var scaleFactor = setupSprite.getScale();
 
 		var sizeX = setupSprite.width * scaleFactor;
@@ -70,7 +98,7 @@ var MenuLayer = cc.Layer.extend({
 		var start = (splitNumber * sizeX) + (splitNumber * spacing);
 
 		for (var i = 0; i < boards; i++) {
-			var testSprite = new cc.Sprite(res.blackStone_png);		// TODO try set this equal to setupSprite
+			var testSprite = new cc.Sprite(this.boardNames[i]);		// TODO try set this equal to setupSprite
 
 			testSprite.setPosition(winsize.width/2 - start + ((sizeX + spacing) * i), winsize.height * 0.4);
 			testSprite.setScale(scaleFactor);
@@ -93,9 +121,9 @@ var MenuLayer = cc.Layer.extend({
 	selectBoard:function(boardNumber) {
 
 		for (var buttonSprite in this.buttonSprites) {
-			this.buttonSprites[buttonSprite].setTexture(res.blackStone_png);
+			this.buttonSprites[buttonSprite].setTexture(this.boardNames[buttonSprite]);
 		}
-		this.buttonSprites[boardNumber].setTexture(res.whiteStone_png);
+		this.buttonSprites[boardNumber].setTexture(this.selectedNames[boardNumber]);
 		this.selectedBoard = boardNumber;
 	},
 	onPlay : function(){
