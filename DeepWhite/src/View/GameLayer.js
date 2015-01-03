@@ -10,12 +10,15 @@ var GameLayer = cc.Layer.extend({
     gridOn:null,
     boardSize:null,
     winSize:null,
+
     ctor:function (model, callback) {
         this._super();
         this.init(model, callback);
     },
     init:function (model, callback) {
         this._super();
+        // this might work?
+        cc.$("#gameCanvas").style.cursor = "default";
 
         this.gridOn = true;
         // Initialize the click handler
@@ -143,6 +146,7 @@ var GameLayer = cc.Layer.extend({
         //cc.assert(target._state == PADDLE_STATE_GRABBED, "Paddle - Unexpected state!");
         //var touchPoint = touch.getLocation();
         //target.x = touchPoint.x;
+
     },
     // Called when click/touch is lifted
     onTouchEnded:function (touch, event) {

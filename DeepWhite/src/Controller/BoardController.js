@@ -9,6 +9,7 @@ var BoardController = cc.Scene.extend({
 	onEnter:function () {
 		this._super();
 
+
 		// The side GUI notifies the controller that the grid
 		// toggle button was pressed by calling back this function
 		this.notationCallback = function() {

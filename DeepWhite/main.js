@@ -54,7 +54,7 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         // First scene to run when the game starts!!!
-        cc.director.runScene(new BoardController());
+        cc.director.runScene(new MenuScene());
     }, this);
 };
 cc.game.run();

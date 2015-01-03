@@ -1,4 +1,10 @@
 var res = {
+    // Menu background
+    menuBack1_png : "res/menuBack1.png",
+    // Menu buttons
+    menuPlay_png : "res/menuPlay.png",
+    menuPlayS_png : "res/menuPlayS.png",
+
     // Traditional play stones
     blackStone_png : "res/blackStone.png",
     whiteStone_png : "res/whiteStone.png",
