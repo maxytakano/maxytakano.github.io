@@ -86,10 +86,11 @@ var MenuLayer = cc.Layer.extend({
 			this.buttonRectangles[i] = cc.rect(boxX - boxWidth / 2, boxY - boxHeight / 2, boxWidth, boxHeight);
 		}
 
+		this.selectBoard(3);
+
 
 	},
 	selectBoard:function(boardNumber) {
-		console.log(boardNumber);
 
 		for (var buttonSprite in this.buttonSprites) {
 			this.buttonSprites[buttonSprite].setTexture(res.blackStone_png);
@@ -99,7 +100,7 @@ var MenuLayer = cc.Layer.extend({
 	},
 	onPlay : function(){
 		// Scene to run from the menu scene, not yet set up
-		cc.director.runScene(new BoardController());
+		cc.director.runScene(new BoardController(this.selectedBoard));
 	}
 });
 

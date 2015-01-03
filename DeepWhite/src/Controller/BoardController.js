@@ -6,9 +6,16 @@ var BoardController = cc.Scene.extend({
 	notationCallback:null,
 	// Side bar
 	sideGUILayer:null,
+	selectedBoard:null,
+	ctor:function(selectedBoard) {
+		this._super();
+
+		this.selectedBoard = selectedBoard;
+	},
 	onEnter:function () {
 		this._super();
 
+		var sizes = [9,13,15,19];
 
 		// The side GUI notifies the controller that the grid
 		// toggle button was pressed by calling back this function
@@ -60,7 +67,7 @@ var BoardController = cc.Scene.extend({
 		}.bind(this);
 
 		// initialize the Model
-		this.boardModel = new BoardModel(9, "KO");
+		this.boardModel = new BoardModel(sizes[this.selectedBoard], "KO");
 
 		/* Initialize the View */
 		// 1. Background Layer
@@ -69,7 +76,7 @@ var BoardController = cc.Scene.extend({
 		// 2. Influence Layer
 
 		// 3. Grid Layer
-		this.gridLayer = new GridLayer(this.boardModel.size);
+		this.gridLayer = new GridLayer(this.selectedBoard);
 		this.addChild(this.gridLayer);
 
 		// 4. UnderFX Layer
