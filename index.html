@@ -16,251 +16,712 @@
 
     <!-- Custom CSS -->
     <link href="css/1-col-portfolio.css" rel="stylesheet">
-
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript" src="js/jquery.youtubeplaylist.js"></script>
+    <script type="text/javascript" src="js/maxy.js"></script>
 
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'  type='text/css'>
-
+    <link rel='stylesheet' type='text/css' href="http://fonts.googleapis.com/css?family=Ubuntu">
+    
 </head>
 
+    
 <body>
 
-
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Max Takano</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="About.html">About</a>
-                    </li>
-                    <li>
-                        <a href="#bottom">Contact</a>
-                    </li>
-                  
-
-                    <li class="dropdown ">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">MaxTapps <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
+    <header class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                                
+                <div class="navbar-header">
+                    <div class="navbar-brand" href="/" style="font-size:3rem; ">
+                        <a href="/" class="tempLogo">
+                            Max Takano
+                        </a>
                         
-                          <li ><a href="MaxTapps/Boulder_Block.html">Boulder Block</a></li>
-                        
-                          <!-- <li ><a href="MaxTapps/Placeholder_Project.html">Cool Future App 1</a></li>
+<!--                        <img class="logo" src="img/logoTemp.png">-->
+                    </div>
 
-                          <li ><a href="MaxTapps/Placeholder_Project.html">Cool Future App 2</a></li>
-
-                          <li ><a href="MaxTapps/Placeholder_Project.html">Cool Future App 3</a></li> -->
-                        
-                        </ul>
-                    </li>
-
-                    <li class="dropdown ">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                          <li ><a href="Projects/Ray_Trace_Engine.html">Ray Tracing Engine</a></li>
-
-                          <li ><a href="Projects/Tower_Defense_Engine.html">Tower Defense Engine</a></li>
-
-                          <!-- <li ><a href="Projects/Placeholder_Project.html">Cool Future Project 1</a></li>
-
-                          <li ><a href="Projects/Placeholder_Project.html">Cool Future Project 2</a></li> -->
-                        
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Half Page Image Background Carousel Header -->
-    <header id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <img src="img/finalPhoenix.png" class="caro1" alt="">
-<!--                 <div class="fill" style="background-image:url('img/test1.png&text=Slide Two');"></div>
- -->                <div class="carousel-caption">
-                    <h2 class="hcaro">Ray Traced Phoenix</h2>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <img src="img/beersmaybe.png" class="caro2" alt="">
-<!--                 <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
- -->                <div class="carousel-caption">
-                    <h2 class="hcaro">Beers Law Dialectic</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <img src="img/bouldini.png" class="caro3" alt="">
-                <div class="carousel-caption">
-                    <h2 class="hcaro">Bouldini!</h2>
-                </div>  
-            </div>
-        </div>
+                
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div class="menuItemNew" id="maxButton">MaxTapps</div>
+                        </li>
 
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
+                        <li>
+                            <div class="menuItemNew" id="projectButton">Projects</div>
+<!--                            <a href="#projects">Projects</a>-->
+                        </li>
+                        
+                        <li>
+                            <div class="menuItemNew" id="aboutButton">About</div>
+<!--                            <a href="#about">About</a>-->
+                        </li>
 
-    </header>
+                        <li>
+                            <div class="menuItemNew" id="contactButton">Contact</div>
+<!--                            <a href="#contact">Contact</a>-->
+                        </li>
 
-    <!-- Page Content -->
-    <div class="container">
-
-
-        <!-- Page Heading -->
-        <div class="text-center">
-            <div class="col-lg-12">
-                <h1 class="page-header1">
-                    Maximilien Jean Takano 
-                </h1>
-                <!-- <p><iframe src="http://maxtakano.com/DeepWhite/index.html" style="border: 0" width="340" height="500" frameborder="0" scrolling="auto"></iframe></p> -->
-                <h2 class="page-header"> 
-                    <small>Computer Graphics and Mobile Game Developer</small>
-                </h2>
-
-            </div>
-        </div>
-        <!-- /.row -->
-
-
-
-        <!-- Project One -->
-        <div class="row">
-            
-            <div class="col-md-5">
-                <h3>Boulder Block</h3>
-                <h4>Test your timing!</h4>
-                <p>Help Bouldini survive an onslaught of falling boulders!  Written in Swift and available on the App Store for FREE! </p>
-                <a class="btn btn-primary" href="MaxTapps/Boulder_Block.html">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <a class="appstamp" href="https://itunes.apple.com/us/app/boulder-block/id931733251?mt=8">
-                <!-- <img class="btn btn-primary" src="img/appbadge.svg" alt=""> -->
-                    <img  src="img/appbadge.svg" alt=""> 
-                </a>
-                <!-- <a class="btn btn-primary" href="https://itunes.apple.com/us/app/boulder-block/id931733251?mt=8">View Project <span class="glyphicon glyphicon-chevron-right"></span></a> -->
-            </div>
-            <div class="col-md-7">
-                <a href="MaxTapps/Boulder_Block.html">
-                    <img class="img-responsive" src="img/bould1.png" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Two -->
-        <div class="row">
-            
-            <div class="col-md-7">
-                <a href="Projects/Ray_Trace_Engine.html">
-                    <img class="img-responsive" src="img/beerslaw.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3 class="h3r">Ray Tracing Engine</h3>
-                <h4 class="h4r">Photorealistic Rendering</h4>
-                <p class="pr">Check out my Ray Tracing Engine, written in C++ for the purpose of rendering beautiful scenes with global illumination. </p>
-                <a class="btn btn-primary" href="Projects/Ray_Trace_Engine.html">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Three -->
-        <div class="row">
-            <div class="col-md-5">
-                <h3>Tower Defense Engine</h3>
-                <h4>A feature rich base</h4>
-                <p>My personal tower defense engine, to be used in the creation of awesome future tower defense apps!</p>
-                <a class="btn btn-primary" href="Projects/Tower_Defense_Engine.html">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-            <div class="col-md-7">
-                <a href="Projects/Tower_Defense_Engine.html">
-                    <img class="img-responsive" src="img/towerEngine.png" alt="">
-                </a>
-            </div>
-            
-        </div>
-        <!-- /.row -->
-
-        <h1 class="page-contact text-center">Contact Me!</h1>
-
-    </div>
-    <!-- /.container -->
-
-    <hr>
-
-    <!-- Footer -->
-        <footer class="yolo">
-            <a name="bottom"></a>
-            <div class="footy">
-            <!-- <div class="row"> -->
-
-                <div class="col-sm-5 footy">
-                    <p class="pFooter">Suggestions? Comments? Angry Rants?  Send them my way at: </p>
-                    <p class="footerHighlight">maxytakano@gmail.com</p>
-                </div>
-
-
-                <div class="col-sm-2 footy">
-                    <p class="pFooter">Linkedin:</p>
-                    <p>
-                    <a class="footerHighlight2" href="http://www.linkedin.com/in/maximilientakano/">Link it Up</a>
-                    </p>
-                </div>
-
-                <div class="col-sm-5 footy">
-                    <p class="pFooter">Resume:</p>
-                    <p class="footerHighlight"><a class="footerHighlight3" href="daResume.pdf">AwesomeResume.pdf</a></p>
+                              
+                    </ul>
                 </div>
                 
             </div>
-
-            <div>
-                <div class="col-sm-12 footy text-right">
-                    Copyright &copy; Max Takano 2014 
+        </nav>
+    </header>
+    <!-- End Navigation -->
+    
+    
+    <div id="content">
+    
+    <!-- Top Giant Carousel -->
+    
+    <div id="screenshots-carousel" class="carousel slide" data-ride="carousel">
+        
+        
+        <!-- Carousel Slides -->
+        <div class="carousel-inner">
+            <div class="item active" style="background-image: url(img/rayTrace/fenix121.png);">
+                <div class="carousel-caption ">
+                    <p>
+                        Ray traced phoenix rendered
+                        <br> with my: 
+                        <a href="#raytrace" class="captionLink">
+                            Ray Tracing Engine
+                        </a>
+                       
+                    </p>
                 </div>
             </div>
+            
+            <div class="item " style="background-image: url(img/hireme.png); background-position: 50% 30%; background-size: 100%" >
+                <div class="carousel-caption ">
+                    <p>
+                        Deep White Go Application
+                        <br> 
+                        <a class="captionLink">
+                            Play in Fullscreen!
+                        </a>
 
-        </footer>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="item" style="background-image: url(img/gsr.png); background-position: 50% 40%; background-size: 100%">
+                <div class="carousel-caption ">
+                    <p>
+                        Galactic Space Race: live multiplayer<br>
+                        space Racing Game!: 
+                        <a  href="#trailer" class="captionLink">
+                            View Trailer
+                        </a>
 
+                    </p>
+                </div> 
+            </div>
+            
+        </div>
+        
+        <ol class="carousel-indicators indicatorTop" style="background: none; color: rgba(0, 255, 0, 0)">
+            <li data-target="#screenshots-carousel" data-slide-to="0"  style="background: none;" class="active">
+                [<span class="toBlack">0</span>]
+            </li>
+            <li data-target="#screenshots-carousel"  style="background: none;" data-slide-to="1">
+                [<span class="toBlack">1</span>]
+            </li>
+            <li data-target="#screenshots-carousel"  style="background: none;" data-slide-to="2">
+                [<span class="toBlack">2</span>]
+            </li>
+        </ol>
+<!--
+        <div class="carousel-caption container">
+                    <p>
+                        <a href="https://itunes.apple.com/us/app/badland/id535176909" target="itunes_store" class="game-name">
+                            Badland
+                        </a>
+                        by Frogmind
+                        <br>
+                        Made with Cocos2D
+                    </p>
+                </div>
+-->
+        <!-- Carousel buttons -->
+        <a class="carousel-control leftTop" href="#screenshots-carousel" role data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="carousel-control rightTop" href="#screenshots-carousel"  data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+        
+    </div>
+    <!------------------------ End of Carousel ------------------------>
+        
+    <div class="pageDivi">
+        <div class="pageDiviInner">
+<!--            <a id="maxtapps"></a>-->
+        </div>
+    </div>  
+
+    <!------------------------ Flashy Name ------------------------>        
+    <div class="text-center">
+        <div class="introduction">
+            <div id="hero">
+                <h1>
+                    Maximilien Takano 
+                </h1>
+                <h2> 
+                    Computer Graphics and Game Developer
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------ MAXTAPPS ------------------------>
+    <div id="trailer" class="pageDivi">
+        <div class="pageDiviInner">
+            <a id="maxtapps"></a>
+            <div class="name">maxtapps</div>
+        </div>
+    </div>   
+   
+    <!------------------ Galactic Space Race (GSR) ------------------>
+    <div  class="contentWrap">
+        <div class="container-fluid" style="max-width: 1000px; padding: 0 10px 0 10px">
+            <div class="row">
+                <div class="container-fluid">
+
+                    <div class="col-md-7 gsr" >
+                        <iframe width="574" height="374" src="http://www.youtube.com/embed/roaiPXZsSE4?wmode=opaque&amp;rel=1" frameborder="0" allowfullscreen="">
+                        </iframe>
+                        
+                    </div>
+                    
+<!--                    TODO: try to allow switching to photos later-->
+<!--
+                    <div class="col-md-7 wrap1" >
+                        <div id="screenshots-carousel2" class="carousel slide" data-ride="carousel" >
+                            
+                            
+                            
+                            <div class="smallCaro">
+                                <div class="carousel-inner" >
+
+                                    <div class="item active" style="background-image: url(img/rayTrace/fenix121.png)">
+                                    </div>
+
+                                    <div class="item" style="background-image: url(img/chicken.png)">
+                                      <div class="carousel-caption">
+                                          <h3>Caption Text</h3>
+                                      </div>
+                                    </div>
+
+                                    <div class="item" style="background-image: url(img/rayTrace/blacknwhite.png)">
+                                      <div class="carousel-caption">
+                                          <h3>Caption Text</h3>
+                                      </div>
+                                    </div>
+
+                                </div>
+
+                                <a class="carousel-control left" href="#screenshots-carousel2" role data-slide="prev">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a class="carousel-control right" href="#screenshots-carousel2"  data-slide="next">
+                                    <span class="icon-next"></span>
+                                </a>
+                            </div>
+                            
+                            <ol class="carousel-indicators">
+                                <li data-target="#screenshots-carousel2" data-slide-to="0" class="active">
+                                    [<span class="toBlack">0</span>]
+                                </li>
+                                <li data-target="#screenshots-carousel2" data-slide-to="1">
+                                    [<span class="toBlack">1</span>]
+                                </li>
+                                <li data-target="#screenshots-carousel2" data-slide-to="2">
+                                    [<span class="toBlack">2</span>]
+                                </li>
+                            </ol>
+                            
+                        </div>
+                        
+                        
+                    </div>
+-->
+                    
+                    
+
+                    <div class="col-md-1 wrap2" style="background: #f8f7f7;">
+                    </div>
+
+                    <div class="col-md-4 wrap3" style="height:380px">
+                        <div class="stats"> 
+                            <h2> Galactic Space Race </h2>
+
+                            <h3> Role </h3>
+                            <p> Lead Programmer, <br> Lead Game Designer </p>
+
+                            <h3> Platform </h3>
+                            <p> iOS </p>
+
+                            <h3> Tech </h3>
+                            <p> Swift, Sprite Kit, Game Center</p>
+                            
+                            <h3> Features </h3>
+                            <p> - Real-time multiplayer<br>
+                                - Global Leaderboard</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="toggle toggle_eot"></span>
+        
+    <!------------------ Boulder Block ------------------>
+    <div class="contentWrap">
+        <div class="container-fluid" style="max-width: 1000px; padding: 0 10px 0 10px">
+            <div class="row">
+                <div class="container-fluid">
+
+                    <div class="col-md-7 wrap1" >
+                        <div id="BoulderBlockCarousel" class="carousel slide" data-ride="carousel" >
+                            
+                            
+                            
+                            <div class="smallCaro">
+                                <div class="carousel-inner" >
+
+                                    <div class="item active" style="background-image: url(img/boulderProj1.png); background-size: 100%; background-position: 0% -10%;">
+                                        <div class="carousel-caption-mini" style="bottom: -64%;">
+                                            <p>
+                                                Can you survive longest? Try out Rock Block!
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="item" style="background-image: url(img/boulderProj2.png); background-size: 100%; background-position: 0% -10%;">
+                                        <div class="carousel-caption-mini" style="bottom: -64%;">
+                                            <p>
+                                                Fast-paced rock blocking, can you keep up?
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="item " style="background-image: url(img/bould1.png); background-size: 100%; background-position: 0% 10%;">
+                                        <div class="carousel-caption-mini" style="bottom: -64%;">
+                                            <p>
+                                                Press down and hold to block rocks!
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a class="carousel-control left" href="#BoulderBlockCarousel" role data-slide="prev">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a class="carousel-control right" href="#BoulderBlockCarousel"  data-slide="next">
+                                    <span class="icon-next"></span>
+                                </a>
+                            </div>
+                            
+                            <ol class="carousel-indicators">
+                                <li data-target="#BoulderBlockCarousel" data-slide-to="0" class="active">
+                                    [<span class="toBlack">0</span>]
+                                </li>
+                                <li data-target="#BoulderBlockCarousel" data-slide-to="1">
+                                    [<span class="toBlack">1</span>]
+                                </li>
+                                <li data-target="#BoulderBlockCarousel" data-slide-to="2">
+                                    [<span class="toBlack">2</span>]
+                                </li>
+                            </ol>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+
+                    <div class="col-md-1 wrap2" style="background: #f8f7f7;">
+                    </div>
+
+                    <div class="col-md-4 wrap3" >
+                        <div class="stats"> 
+                            <h2> Boulder Block </h2>
+
+                            <h3> Role </h3>
+                            <p> Lead Programmer, <br> Lead Game Designer </p>
+
+                            <h3> Platform </h3>
+                            <p> iOS </p>
+
+                            <h3> Tech </h3>
+                            <p> Swift, Sprite Kit, Game Center</p>
+                            
+                            <h3> Features </h3>
+                            <p> - Global Leaderboard</p>
+                            
+                            <h3 style="margin-bottom: 0.75rem"> Download Now! </h3>
+                            <a class="appstamp" href="https://itunes.apple.com/us/app/boulder-block/id931733251?mt=8">
+                            <!-- <img class="btn btn-primary" src="img/appbadge.svg" alt=""> -->
+                                <img src="img/appbadge.svg" alt=""> 
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="toggle toggle_eot"></span>
+        
+        
+        
+    <!-- Upcoming Apps for the curious :] -->
+    <!------------------ Guppy Gulp ------------------>
+    <!------------------ Hard TD ------------------>
+        
+    
+    <!------------------------ Projects ------------------------>
+    <div class="pageDivi">
+        <div class="pageDiviInner">
+            <a id="projects"></a>
+            <div class="name">projects</div>
+        </div>
+    </div>
+        
+    <!------------------ Deep White ------------------>
+    <div class="contentWrap">
+        <div class="container-fluid" style="max-width: 1000px; padding: 0 10px 0 10px">
+            <div class="row">
+                <div class="container-fluid">
+
+                    <div class="col-md-7 deepWhite" >
+                        <iframe src="http://maxtakano.com/DeepWhite/index.html" width="574" height="430" frameborder="0" scrolling="auto">
+                        </iframe>
+                    </div>
+                    
+                    
+
+                    <div class="col-md-1 wrap2" style="background: #f8f7f7;">
+                    </div>
+
+                    <div class="col-md-4 wrap3" style="height:437px" >
+                        <div class="stats"> 
+                            <h2> Deep White </h2>
+
+                            <h3> Role </h3>
+                            
+                            <p> 
+                                Lead Programmer, AI Programmer
+                            </p>
+
+                            <h3> Platform </h3>
+                            <p> Web / iOS / Android </p>
+
+                            <h3> Tech </h3>
+                            <p> Cocos2d-js</p>
+                            
+                            <h3> Features </h3>
+                            <p> - Fully integrated with WGo.js <br> 
+                            </p>
+                            
+                            <h3> Play it Right Here! </h3>
+                            <img style="margin: 0.75rem 0 0.75rem 0; width: 140px;" src="img/icons/arrow.png"> </img>
+                            
+                            
+                            <h3> Or Play in Fullscreen: </h3>
+                            <a  style="font-size:1.75rem;" href="DeepWhite/index.html" class="captionLink">
+                                Deep White FullScreen
+                            </a>
+                            
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="toggle toggle_eot"></span>
+        
+
+    <!------------------ Ray Tracing Engine ------------------>
+    <div id="raytrace" class="contentWrap">
+        <div class="container-fluid" style="max-width: 1000px; padding: 0 10px 0 10px">
+            <div class="row">
+                <div class="container-fluid">
+
+                    <div class="col-md-7 wrap1" style="height:390px; max-height:390px;">
+                        <div id="RayTracingCarousel" class="carousel slide" data-ride="carousel" >
+                            
+                            
+                            
+                            <div class="smallCaro" style="height:390px; max-height:387px;">
+                                <div class="carousel-inner" >
+
+                                    <div class="item active" style="background-image: url(img/rayTrace/blacknwhite.png);   background-position:40% -20px;"> 
+                                        <div class="carousel-caption-mini">
+                                            <p>
+                                                Glossy Black and White Fresnel Metal Dragons
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="item " style="background-image: url(img/rayTrace/fenix121.png);">
+                                        <div class="carousel-caption-mini">
+                                            <p>
+                                                Lights made with volumetric rendering, red Beer's law phoenix
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="item" style="background-image: url(img/rayTrace/optimus.png); background-position:0px -35px; background-size: 120%;">
+                                        <div class="carousel-caption-mini">
+                                            <p>
+                                                Optimus Prime model with various Ashikhmin BRDF materials
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="item " style="background-image: url(img/rayTrace/aa13.png); background-position: 25% 0%; background-size: 190%">
+                                        <div class="carousel-caption-mini">
+                                            <p>
+                                                Varying Fresnel dielectric indexes and varying Beer's Law light attenuation
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="item " style="background-image: url(img/rayTrace/FocalPlane.png); background-position:0px -40px; background-size: 100%;">
+                                        <div class="carousel-caption-mini">
+                                            <p>
+                                                Simulated medium distance camera aperature
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="item " style="background-image: url(img/rayTrace/beersmaybe.png); background-position:0px -40px; background-size: 100%;">
+                                        <div class="carousel-caption-mini">
+                                            <p>
+                                                Green Jell-O Dragon (also Beer's law).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a class="carousel-control left" href="#RayTracingCarousel" role data-slide="prev">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a class="carousel-control right" href="#RayTracingCarousel"  data-slide="next">
+                                    <span class="icon-next"></span>
+                                </a>
+                            </div>
+                            
+                            <ol class="carousel-indicators" style="width: 34%; margin-left: -17%;">
+                                <li data-target="#RayTracingCarousel" data-slide-to="0" class="active">
+                                    [<span class="toBlack">0</span>]
+                                </li>
+                                <li data-target="#RayTracingCarousel" data-slide-to="1">
+                                    [<span class="toBlack">1</span>]
+                                </li>
+                                <li data-target="#RayTracingCarousel" data-slide-to="2">
+                                    [<span class="toBlack">2</span>]
+                                </li>
+                                <li data-target="#RayTracingCarousel" data-slide-to="3">
+                                    [<span class="toBlack">3</span>]
+                                </li>
+                                <li data-target="#RayTracingCarousel" data-slide-to="4">
+                                    [<span class="toBlack">4</span>]
+                                </li>
+                                <li data-target="#RayTracingCarousel" data-slide-to="5">
+                                    [<span class="toBlack">5</span>]
+                                </li>
+                            </ol>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    
+
+                    <div class="col-md-1 wrap2" style="background: #f8f7f7;">
+                    </div>
+
+                    <div class="col-md-4 wrap3" style="height:390px;" >
+                        <div class="stats"> 
+                            <h2> Ray Tracing Engine </h2>
+
+                            <h3> Role </h3>
+                            <p> Lead Programmer, 3D Modeler </p>
+
+                            <h3> Platform </h3>
+                            <p> Desktop </p>
+                            
+                            <h3> Tech </h3>
+                            <p> Visual Studio 2013, C++ </p>
+                            
+                            <h3> Features </h3>
+                            <p> - Spatial data structures<br> 
+                                - Anti-aliasing <br>
+                                - Global Illumination<br>
+                                - Volumetric rendering<br>
+                                - Ashikhmin Materials<br>
+                                - Fresnel Materials
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="toggle toggle_eot"></span>
+        
+    <!-- Upcoming Projects for the curious :] -->
+    <!------------------ Tower Defense Engine ------------------>
+        
+        
+    <!------------------------ About ------------------------>
+    <div class="pageDivi">
+        <div class="pageDiviInner">
+            <a id="about"></a>
+            <div class="name">about</div>
+        </div>
+    </div>   
+        
+        
+    <div class="contentWrap">
+        <div class="container-fluid" style="max-width: 1000px; padding: 0 10px 0 10px">
+            <div class="row">
+                <div class="container-fluid">
+
+                    <div class="col-md-7 wrap1 about" >     
+                        Hello World,<br>
+                        My name is Max Takano and I have a passion for making games.  I am a avid game maker, using my education at the University of California, San Diego to improve my programming skills and game quality.  I currently study computer science and specialize in 3d Graphics.  On the side I have multiple game projects on my own and with teams that I spend all of my free time on.<br><br>
+                        I have two summers worth of job experience, I worked an internship at ServiceNow in 2012 and at Sony Entertainment Network in 2013.  I enjoy challenging work and how it increases my knowledge and programming skills.  Tackling difficult problems is another hobby of mine, my Deep White application was built to allow myself to begin working on a Go AI (Go is one of the few games where computers can't beat humans).<br><br>
+                        
+                        If you are a potential employer and like what you see (or play), feel free to contact me any time.
+                    
+                        
+                        <div class="container-fluid iconBox">
+                            <div class="col-md-4 aboutIcons">
+                                <p>Resume</p>
+                                <a href="daResume.pdf">
+                                    <img class="iconImage" src="img/Icons/pdf.png"></img>
+                                </a>
+                            </div>    
+                            
+                            <div class="col-md-4 aboutIcons">
+                                <p>Link It Up</p>
+                                <a href="http://www.linkedin.com/in/maximilientakano/">
+                                    <img class="iconImage" src="img/Icons/linkedin.png"></img>
+                                </a>
+                            </div>    
+                            
+                            <div class="col-md-4 aboutIcons">
+                                <p>GitHub</p>
+                                <a href="https://github.com/maxytakano">
+                                    <img class="iconImage" src="img/Icons/github.png"></img>
+                                </a>
+                            </div>    
+                                
+                        </div>
+                            
+                    </div>
+                    
+                    <div class="col-md-1 wrap2 " >
+                    </div>
+
+                    <div class="col-md-4  portrait" style="background-image: url(img/portrait.png);";>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <br>
+    <br>
+    
+    <!------------------------ Contact ------------------------>
+    <div class="pageDivi">
+        <div class="pageDiviInner">
+            <a id="contact"></a>
+            <div class="name">contact</div>
+        </div>
+    </div>   
+
+
+    <div class="contentWrap">
+        <div class="container-fluid" style="max-width: 1000px; padding: 0 10px 0 10px">
+            <div class="row">
+                <div class="container-fluid" style="margin-top: 50px; margin-bottom: 70px">
+                    
+                    <div class="container-fluid" style="margin-bottom: 3rem;"> 
+                        <div class="col-md-1 contactRow">
+                            <img  class="email" src="img/Icons/email2.png"></img>
+                        </div>
+                        <div class="col-md-11 contactRow" style="margin-top: 15px; padding-left: 10px;">
+                            maxytakano@gmail.com
+                        </div>
+                    </div>
+                
+                    <div class="container-fluid">
+                        <div class="col-md-1 contactRow">
+                            <img class="phone" src="img/Icons/phone.png"></img>
+                        </div>
+                        <div class="col-md-11 contactRow" style="margin-top: 20px; padding-left: 10px;">
+                            (405)-314-3293
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="col-sm-12 footy text-center">
+            Copyright &copy; Max Takano 2014
+            <br>
+            All content and trademarks property of their respective owners
+            <br>
+            <br>
+        </div>
+    </div>
+    
+    </div>  <!-- page content end -->    
+   
 
     <!-- jQuery Version 1.11.0 -->
     <script src="js/jquery-1.11.0.js"></script>
@@ -270,8 +731,81 @@
 
     <!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 4500 //changes the speed
+
+    $("#maxButton").click(function() {
+        var top = $('#maxtapps').position().top;
+        top -= 82;
+        
+        $('html, body').animate({
+            
+            
+            scrollTop: top
+        }, 700);
+    });
+        
+    $("#projectButton").click(function() {
+        var top = $('#projects').position().top;
+        top -= 82;
+        
+        $('html, body').animate({
+            
+            
+            scrollTop: top
+        }, 700);
+    });
+        
+    $("#aboutButton").click(function() {
+        var top = $('#about').position().top;
+        top -= 82;
+        
+        $('html, body').animate({
+            
+            
+            scrollTop: top
+        }, 700);
+    });
+        
+    $("#contactButton").click(function() {
+        var top = $('#contact').position().top;
+//        top -= 82;
+        
+        $('html, body').animate({
+            
+            
+            scrollTop: top
+        }, 700);
+    });
+    
+        
+        
+    $('#screenshots-carousel').carousel({
+        pause: false,
+        wrap: true,
+        interval: 6500 //changes the speed
+    })
+    
+    $('#screenshots-carousel2').carousel({
+        pause: false,
+        wrap: true,
+        interval: false //changes the speed
+    })
+    
+    $('#BoulderBlockCarousel').carousel({
+        pause: false,
+        wrap: true,
+        interval: false //changes the speed
+    })
+    
+    $('#DeepWhiteCarousel').carousel({
+        pause: false,
+        wrap: true,
+        interval: false //changes the speed
+    })
+    
+    $('#RayTracingCarousel').carousel({
+        pause: false,
+        wrap: true,
+        interval: false //changes the speed
     })
     </script>
 
