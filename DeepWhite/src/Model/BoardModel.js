@@ -529,8 +529,9 @@ var BoardModel = cc.Class.extend({
         return color == WGo.B ? this.position.capCount.black : this.position.capCount.white;
     },
 
-    /*
-     * Validate postion. Position is tested from 0:0 to size:size, if there are some moves, that should be captured, they will be removed.
+    /**
+     * Validate position. Position is tested from 0:0 to size:size,
+     * if there are some moves, that should be captured, they will be removed.
      * You can use this, after insertion of more stones.
      *
      * @return array removed stones

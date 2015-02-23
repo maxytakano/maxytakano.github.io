@@ -1,10 +1,10 @@
 var BackgroundLayer = cc.Layer.extend({
-	ctor:function () {
+	ctor:function (selectedTheme) {
 		this._super();
-		this.init();
+		this.init(selectedTheme);
 	},
 
-	init:function () {
+	init:function (selectedTheme) {
 		this._super();
 		var winSize = cc.director.getWinSize();
 		var localSize = winSize.height;
@@ -19,8 +19,13 @@ var BackgroundLayer = cc.Layer.extend({
 					(localSize / (2*n)) + ((localSize / n) * y)
 				);
 
-
-				var spriteBG = new cc.Sprite(res.woodBackground_png);
+				if (selectedTheme == "advanced") {
+					// TODO: use a different sprite instead of coloring
+					var spriteBG = new cc.Sprite(res.woodBackground_png);
+					spriteBG.setColor(new cc.Color(0,0,0,0));
+				} else if (selectedTheme == "traditional") {
+					var spriteBG = new cc.Sprite(res.woodBackground_png);
+				}
 
 				spriteBG.setScaleX( (localSize / spriteBG.getContentSize().width) / n);
 				spriteBG.setScaleY( (localSize / spriteBG.getContentSize().height) / n);

@@ -17,8 +17,14 @@ var res = {
     blackStone_png : "res/blackStone3.png",
     whiteStone_png : "res/whiteStone3.png",
     emptyTile_png : "res/emptyTile3.png",
+    // Advanced play items
+    future_black_png : "res/future_black.png",
+    future_white_png : "res/future_white.png",
+    influ_png : "res/influ.png",
     // Board background
     woodBackground_png : "res/woodBackground.png",
+    // Influence
+    influence_png : "res/influence.png",
     // Side bar background
     bamboo_png : "res/bamboo.png",
     // Side bar buttons
