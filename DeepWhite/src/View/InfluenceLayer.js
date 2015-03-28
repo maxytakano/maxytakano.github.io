@@ -57,7 +57,10 @@ var InfluenceLayer = cc.Layer.extend({
             for (var y = 0; y < this.boardSize; y++) {
 
                 this.spriteArray[x][y] = new cc.Sprite(res.influence_png);
-                this.spriteArray[x][y].setColor(new cc.Color(0,0,0,0));
+                //this.spriteArray[x][y].setColor(new cc.Color(0,0,0,200));
+                //this.spriteArray[x][y].setColor(cc.color(255,255,255,255));
+                this.spriteArray[x][y].setOpacity(0);
+
                 this.spriteArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5));
                 this.spriteArray[x][y].setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
                 this.addChild(this.spriteArray[x][y]);
@@ -135,16 +138,25 @@ var InfluenceLayer = cc.Layer.extend({
                     if (influence >= 255.0) {
                         influence = 255.0
                     }
-                    influence_color = cc.color(influence, influence/2.0, 0);
+                    //influence_color = cc.color(influence, influence/2.0, 0);
+                    influence_color = cc.color(255, 128, 0);
+                    this.spriteArray[x][y].setOpacity(influence);
                 } else if (influence < 0) {
                     influence *= -1.0;
                     if (influence >= 255.0) {
                         influence = 255.0
                     }
-                    influence_color = cc.color(0, influence/2.0, influence);
+                    //influence_color = cc.color(0, influence/2.0, influence);
+                    influence_color = cc.color(0, 128, 255);
+                    this.spriteArray[x][y].setOpacity(influence);
                 }
 
+                //if (influence != 0) {
+                //    this.spriteArray[x][y].setOpacity(128);
+                //}
+
                 this.spriteArray[x][y].setColor(influence_color);
+
 
             }
         }

@@ -72,8 +72,12 @@ var GameLayer = cc.Layer.extend({
         // Needed to show the board in advanced mode!
         if (theme == "advanced") {
             this.emptySprite = res.influ_png;
+            this.black_stone_img = res.future_black_png;
+            this.white_stone_img = res.future_white_png;
         } else if (theme == "traditional") {
             this.emptySprite = res.emptyTile_png;
+            this.black_stone_img = res.blackStone_png;
+            this.white_stone_img = res.whiteStone_png;
         }
 
         // Initialize each sprite tile to be empty and assign its position/scale
@@ -164,9 +168,9 @@ var GameLayer = cc.Layer.extend({
                 //}
 
                 if (this.boardModel.getStone(x, y) == 1) {
-                    this.spriteArray[x][y].setTexture(res.future_black_png);
+                    this.spriteArray[x][y].setTexture(this.black_stone_img);
                 } else if (this.boardModel.getStone(x, y) == -1) {
-                    this.spriteArray[x][y].setTexture(res.future_white_png);
+                    this.spriteArray[x][y].setTexture(this.white_stone_img);
                 } else if (this.boardModel.getStone(x, y) == 0) {
                     this.spriteArray[x][y].setTexture(this.emptySprite);
                 }

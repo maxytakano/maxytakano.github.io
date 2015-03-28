@@ -175,7 +175,7 @@ var MenuLayer = cc.Layer.extend({
 			this.themeRectangles[i] = cc.rect(boxX - boxWidth / 2, boxY - boxHeight / 2, boxWidth, boxHeight);
 		}
 
-		this.selectTheme(0);
+		this.selectTheme(1);
 
 
 	},

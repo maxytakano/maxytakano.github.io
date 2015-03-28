@@ -85,6 +85,12 @@ var BoardController = cc.Scene.extend({
 			this.update();
 
 			// let the ai play
+			var move = this.basicAI.make_move();
+			this.boardModel.play(move[0], move[1], this.boardModel.turn, false);
+
+			// Update the influence model
+			this.influenceModel.update();
+			this.update();
 			// pause for time? or display "thinking?"
 
 			// update board again
@@ -96,6 +102,9 @@ var BoardController = cc.Scene.extend({
 
 		// 2. Influence Model
 		this.influenceModel = new InfluenceModel(this.boardModel);
+
+		/* initialize the AI */
+		this.basicAI = new BasicAI(this.boardModel, this.influenceModel);
 
 		/* Initialize the View */
 		// 1. Background Layer

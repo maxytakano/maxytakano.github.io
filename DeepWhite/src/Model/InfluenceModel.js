@@ -17,6 +17,7 @@ var InfluenceModel = cc.Class.extend({
     ctor:function(model){
         this.boardModel = model;
         this.boardSize = this.boardModel.size;
+        this.total_influence = 0.0;
 
         // Initialize the 2d influenceArray
         this.influenceArray = new Array(this.boardSize);
@@ -63,6 +64,19 @@ var InfluenceModel = cc.Class.extend({
 
             }
         }
+
+        this.total_influence = 0.0;
+
+        // update influence totals
+        for (var x = 0; x < this.boardModel.size; x++) {
+            for (var y = 0; y < this.boardModel.size; y++) {
+                this.total_influence += this.influenceArray[x][y];
+            }
+        }
+
+    },
+    get_total_influence:function() {
+        return this.total_influence;
     },
     addInfluence:function(x, y, color) {
         // 1. add influence at the stone

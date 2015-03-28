@@ -22,6 +22,7 @@
         "src/View/GameLayer.js",
         "src/View/GUILayer.js",
         "src/View/SideBackLayer.js",
-        "src/View/SideGUILayer.js"
+        "src/View/SideGUILayer.js",
+        "src/AI/BasicAi.js"
     ]
 }
