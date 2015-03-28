@@ -23,6 +23,6 @@
         "src/View/GUILayer.js",
         "src/View/SideBackLayer.js",
         "src/View/SideGUILayer.js",
-        "src/AI/BasicAi.js"
+        "src/AI/BasicAI.js"
     ]
 }
