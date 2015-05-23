@@ -138,6 +138,7 @@ Position.prototype = {
 
     get: function(x,y) {
         if(x < 0 || y < 0 || x >= this.size || y >= this.size) return undefined;
+
         return this.schema[x*this.size+y];
     },
 
@@ -310,8 +311,10 @@ var BoardModel = cc.Class.extend({
         if(!this.isOnBoard(x,y)) return 1;
         if(this.position.get(x,y) != 0) return 2;
 
+
         // clone position
         if(!c) c = this.turn;
+
 
         var new_pos = this.position.clone();
         new_pos.set(x,y,c);

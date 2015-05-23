@@ -25,6 +25,8 @@ var BackgroundLayer = cc.Layer.extend({
 					spriteBG.setColor(new cc.Color(0,0,0,0));
 				} else if (selectedTheme == "traditional") {
 					var spriteBG = new cc.Sprite(res.woodBackground_png);
+					// TODO: temp
+					spriteBG.setColor(new cc.Color(0,0,0,0));
 				}
 
 				spriteBG.setScaleX( (localSize / spriteBG.getContentSize().width) / n);

@@ -7,15 +7,16 @@ var SideGUILayer = cc.Layer.extend({
     whiteLabel:null,
     blackLabel:null,
     toggleCallback:null,
+    influenceCallback:null,
     //buttonRectangles:null,
     //buttonSprites:null,
     //buttonNames:null,
     //selectedNames:null,
-    ctor:function (model, toggleCallback) {
+    ctor:function (model, toggleCallback, influenceCallback) {
         this._super();
-        this.init(model, toggleCallback);
+        this.init(model, toggleCallback, influenceCallback);
     },
-    init:function (model, toggleCallback) {
+    init:function (model, toggleCallback, influenceCallback) {
         this._super();
 
         // TODO: figure something different out, can only have one listener in the view
@@ -46,6 +47,7 @@ var SideGUILayer = cc.Layer.extend({
 
         this.boardModel = model;
         this.toggleCallback = toggleCallback;
+        this.influenceCallback = influenceCallback;
 
         var winSize = cc.director.getWinSize();
         var localSize = winSize.width / 4;
@@ -112,10 +114,40 @@ var SideGUILayer = cc.Layer.extend({
         menuButton.setScale(0.5);
         menuButton.setPosition(cc.p(localSize * 3.5, winSize.height * 0.3));
 
-        var menu = new cc.Menu(notationToggle, menuButton);  //7. create the menu
+
+
+        ///// Influence Model buttons /////
+        // 1. Influence Map button
+        var influence_map_button = new cc.MenuItemSprite(
+            new cc.Sprite(res.future_black_png), // normal state image
+            new cc.Sprite(res.future_white_png), //select state image
+            influenceCallback.bind(null, 0), this
+        );
+        influence_map_button.setScale(0.2);
+        influence_map_button.setPosition(cc.p(localSize * 3.3, winSize.height * 0.7));
+
+        // 1. Influence Map button
+        var tension_map_button = new cc.MenuItemSprite(
+            new cc.Sprite(res.future_black_png), // normal state image
+            new cc.Sprite(res.future_white_png), //select state image
+            influenceCallback.bind(null, 1), this
+        );
+        tension_map_button.setScale(0.2);
+        tension_map_button.setPosition(cc.p(localSize * 3.5, winSize.height * 0.7));
+
+        // 1. Influence Map button
+        var vulnerability_map_button = new cc.MenuItemSprite(
+            new cc.Sprite(res.future_black_png), // normal state image
+            new cc.Sprite(res.future_white_png), //select state image
+            influenceCallback.bind(null, 2), this
+        );
+        vulnerability_map_button.setScale(0.2);
+        vulnerability_map_button.setPosition(cc.p(localSize * 3.7, winSize.height * 0.7));
+
+        var menu = new cc.Menu(notationToggle, menuButton, influence_map_button,
+            tension_map_button, vulnerability_map_button);  //7. create the menu
         menu.setPosition(cc.p(0,0));
         this.addChild(menu);
-
 
 
         //// TODO: figure something different out, can only have one listener in the view

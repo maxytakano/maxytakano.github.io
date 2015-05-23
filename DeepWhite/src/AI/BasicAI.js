@@ -26,19 +26,19 @@ var BasicAI = cc.Class.extend({
 
                 // Check if playAttempt was valid  (equals true, not a number)
                 if (typeof playAttempt != "number") {
-
                     this.boardModel.play(x, y, this.boardModel.turn, false);
-                    // Update the influence model
+
+                     //Update the influence model
                     this.influenceModel.update();
 
-                    // do influence calculation
+                     //do influence calculation
                     current_influence = this.influenceModel.get_total_influence();
                     if (current_influence < smallest_influence) {
                         smallest_influence = current_influence;
                         best_move = [x, y];
                     }
 
-                    // pop that position
+                     //pop that position
                     this.boardModel.popPosition()
                 }
             }

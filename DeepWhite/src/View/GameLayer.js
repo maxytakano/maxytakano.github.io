@@ -88,15 +88,28 @@ var GameLayer = cc.Layer.extend({
                 this.spriteArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5));
                 this.spriteArray[x][y].setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
 
-                // debug label
-                var redColor = cc.color(255, 0, 0);
-                var labelString = x + ", " + y;
-                this.labelArray[x][y] = new cc.LabelTTF(labelString, "Helvetica", 10);
-                this.labelArray[x][y].setFontFillColor(redColor);
-                this.labelArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.65));
+                // debug labels
+                //var redColor = cc.color(255, 0, 0);
+                //var labelString = x + ", " + y;
+                //this.labelArray[x][y] = new cc.LabelTTF(labelString, "Helvetica", 10);
+                //this.labelArray[x][y].setFontFillColor(redColor);
+                //this.labelArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.65));
                 //this.addChild(this.labelArray[x][y]);
 
                 this.addChild(this.spriteArray[x][y]);
+
+                // star point indicators for advanced
+                var star_coords = [3, 9, 15];
+                if (theme == "advanced") {
+                    if (star_coords.indexOf(x) != -1 && star_coords.indexOf(y) != -1) {
+                        var star_sprite = new cc.Sprite(res.star_point_png);
+                        star_sprite.setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.5));
+                        star_sprite.setScale( this.tileSize / this.spriteArray[x][y].getContentSize().width );
+                        this.addChild(star_sprite);
+
+                    }
+
+                }
             }
         }
 
@@ -156,7 +169,7 @@ var GameLayer = cc.Layer.extend({
         for (var x = 0; x < this.boardModel.size; x++) {
             for (var y = 0; y < this.boardModel.size; y++) {
 
-                this.labelArray[x][y].setString(this.influenceMap.influenceArray[x][y].toFixed(1));
+                //this.labelArray[x][y].setString(this.influenceMap.influenceArray[x][y].toFixed(1));
 
                 // TODO Change 1, 0, -1 to constants
                 //if (this.boardModel.getStone(x, y) == 1) {

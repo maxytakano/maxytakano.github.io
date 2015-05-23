@@ -41,7 +41,10 @@ var res = {
     board15x15_png : "res/boards/board15x15.png",
     grid15x15_png : "res/boards/grid15x15.png",
     board19x19_png : "res/boards/board19x19.png",
-    grid19x19_png : "res/boards/grid19x19.png"
+    grid19x19_png : "res/boards/grid19x19.png",
+
+    // Advanced art
+    star_point_png : "res/star_point.png"
 
 };
 
