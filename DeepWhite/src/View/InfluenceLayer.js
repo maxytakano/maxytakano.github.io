@@ -71,12 +71,12 @@ var InfluenceLayer = cc.Layer.extend({
                 this.addChild(this.spriteArray[x][y]);
 
                 // debug labels
-                var redColor = cc.color(255, 0, 0);
-                var labelString = "";
-                this.labelArray[x][y] = new cc.LabelTTF(labelString, "Helvetica", 10);
-                this.labelArray[x][y].setFontFillColor(redColor);
-                this.labelArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.65));
-                this.addChild(this.labelArray[x][y]);
+                //var redColor = cc.color(255, 0, 0);
+                //var labelString = "";
+                //this.labelArray[x][y] = new cc.LabelTTF(labelString, "Helvetica", 10);
+                //this.labelArray[x][y].setFontFillColor(redColor);
+                //this.labelArray[x][y].setPosition( (this.tileSize * x) + (this.tileSize * 1.5), (this.tileSize * y) + (this.tileSize * 1.65));
+                //this.addChild(this.labelArray[x][y]);
 
             }
         }
@@ -152,7 +152,7 @@ var InfluenceLayer = cc.Layer.extend({
 
                 // debug labels
 
-                this.labelArray[x][y].setString(influence);
+                //this.labelArray[x][y].setString(influence);
 
 
                 if (influence >= 0) {

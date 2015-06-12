@@ -35,6 +35,7 @@ var GridLayer = cc.Layer.extend({
         this.spriteBG.setScaleY( localSize / this.spriteBG.getContentSize().height );
 
         this.spriteBG.setPosition(centerPos);
+
         this.addChild(this.spriteBG);
 
 

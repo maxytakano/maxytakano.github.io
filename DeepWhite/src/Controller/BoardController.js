@@ -11,11 +11,17 @@ var BoardController = cc.Scene.extend({
 	clickedAtCallback:null,
 	notationCallback:null,
 	influenceCallback:null,
+	testingCallback:null,
 	// Side bar
 	sideGUILayer:null,
 	// Selections
 	selectedBoard:null,
 	selectedTheme:null,
+	// testing state
+	testMode:null,
+	number_test_moves:null,
+
+
 	ctor:function(selectedBoard, selectedTheme) {
 		this._super();
 		this.selectedTheme = selectedTheme;
@@ -55,6 +61,27 @@ var BoardController = cc.Scene.extend({
 			this.update();
 		}.bind(this);
 
+		// call back entering testing mode
+		this.testingCallback = function() {
+			if (this.testMode == true) {
+				this.testMode = false;
+
+				// pop x number times where x was number moves played
+				// in the test mode.
+				for (var i = 0; i < this.number_test_moves; i++) {
+					this.boardModel.popPosition();
+				}
+
+				// reset the influence model
+				this.influenceModel.update();
+				this.update();
+			} else {
+				// start counting test moves so we can reset back
+				this.testMode = true;
+				this.number_test_moves = 0;
+			}
+		}.bind(this);
+
 
 		// The view notifies the controller of user click location,
 		// by calling back this function.
@@ -69,26 +96,26 @@ var BoardController = cc.Scene.extend({
 			// Check if playAttempt was valid  (equals true, not a number)
 			if (typeof playAttempt != "number") {
 
-				// Plays a move on the board, and switches the turn
-				// 3rd param is color to play (use current turn)
-				// 4th param is whether to actually play or just test the move
-				this.boardModel.play(x, y, this.boardModel.turn, false);
+				// if normal mode, play the piece and add a number otherwise
+				// save the board state and set the board to that one after clicking the button again
+				// also add an undo button while in this state
+				if (this.testMode == true) {
+					this.number_test_moves += 1;
+					this.boardModel.play(x, y, this.boardModel.turn, false);
+					this.influenceModel.update();
+				} else {
+					// Plays a move on the board, and switches the turn
+					// 3rd param is color to play (use current turn)
+					// 4th param is whether to actually play or just test the move
+					this.boardModel.play(x, y, this.boardModel.turn, false);
 
-				// nice sample moves to view maps for.
-				//this.boardModel.play(4, 15, this.boardModel.turn, false);
-				//this.boardModel.play(9, 10, this.boardModel.turn, false);
-				//this.boardModel.play(12, 15, this.boardModel.turn, false);
-				//this.boardModel.play(9, 2, this.boardModel.turn, false);
-				//this.boardModel.play(3, 7, this.boardModel.turn, false);
-				//this.boardModel.play(13, 4, this.boardModel.turn, false);
-				//this.boardModel.play(8, 7, this.boardModel.turn, false);
+					// TODO: this seems hacky and doesn't follow normal gui pattern
+					// TODO: model should keep track of order pieces played and draw them all each update
+					this.boardGUILayer.add_number(x, y, whiteColor);
 
-				// TODO: this seems hacky and doesn't follow normal gui pattern
-				// TODO: model should keep track of order pieces played and draw them all each update
-				this.boardGUILayer.add_number(x, y, whiteColor);
-
-				// Update the influence model
-				this.influenceModel.update();
+					// Update the influence model
+					this.influenceModel.update();
+				}
 
 			} else {
 				// Handle invalid move based on error code and return
@@ -108,11 +135,20 @@ var BoardController = cc.Scene.extend({
 			// update the view
 			// TODO: (should this happen via notification from model?)
 			// TODO: make a function to update all relevant parts of the view (fx, hud)
-			this.update();
+			//this.update();
 
 			///// AI MOVE SECTION /////
+			// new
 			//var move = this.basicAI.make_move();
-            //
+			//this.boardGUILayer.markBest(move[0], move[1]);
+			//// Update the influence model
+			//this.influenceModel.update();
+			//// update the view
+			//this.update();
+
+			// old
+			//var move = this.basicAI.make_move();
+			//
 			//// white plays using the x and y from the move.
 			//this.boardModel.play(move[0], move[1], this.boardModel.turn, false);
             //
@@ -124,7 +160,7 @@ var BoardController = cc.Scene.extend({
 			//this.influenceModel.update();
             //
 			//// update the view
-			//this.update();
+			this.update();
 
 		}.bind(this);
 
@@ -181,7 +217,8 @@ var BoardController = cc.Scene.extend({
 		this.addChild(new SideBackLayer());
 
 		// 2. Side bar GUI Layer
-		this.sideGUILayer = new SideGUILayer(this.boardModel, this.notationCallback, this.influenceCallback);
+		this.sideGUILayer = new SideGUILayer(this.boardModel, this.notationCallback,
+			this.influenceCallback, this.testingCallback);
 		this.addChild(this.sideGUILayer);
 
 
@@ -189,8 +226,9 @@ var BoardController = cc.Scene.extend({
 	},
 	update:function () {
 		this.gameLayer.update();
-		this.sideGUILayer.update();
+		//this.sideGUILayer.update();
 		this.influenceLayer.update();
+		this.boardGUILayer.update();
 	}
 
 

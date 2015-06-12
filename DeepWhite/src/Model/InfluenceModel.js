@@ -78,14 +78,14 @@ var InfluenceModel = cc.Class.extend({
 
 
 
-        //this.total_influence = 0.0;
-        //
-        //// update influence totals
-        //for (var x = 0; x < this.boardModel.size; x++) {
-        //    for (var y = 0; y < this.boardModel.size; y++) {
-        //        this.total_influence += this.influenceArray[x][y];
-        //    }
-        //}
+        this.total_influence = 0.0;
+
+        // update influence totals
+        for (var x = 0; x < this.boardModel.size; x++) {
+            for (var y = 0; y < this.boardModel.size; y++) {
+                this.total_influence += this.influenceArray[x][y];
+            }
+        }
 
     },
     select_map:function(selected_map) {

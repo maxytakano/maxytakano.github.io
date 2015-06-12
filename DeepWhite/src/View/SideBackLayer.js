@@ -23,6 +23,7 @@ var SideBackLayer = cc.Layer.extend({
         spriteBG.setScaleY( winSize.height / spriteBG.getContentSize().height );
 
         spriteBG.setPosition(centerPos);
+        spriteBG.setColor(new cc.Color(100,100,100,0));
         this.addChild(spriteBG);
 
     }

@@ -8,15 +8,16 @@ var SideGUILayer = cc.Layer.extend({
     blackLabel:null,
     toggleCallback:null,
     influenceCallback:null,
+    testingCallback:null,
     //buttonRectangles:null,
     //buttonSprites:null,
     //buttonNames:null,
     //selectedNames:null,
-    ctor:function (model, toggleCallback, influenceCallback) {
+    ctor:function (model, toggleCallback, influenceCallback, testingCallback) {
         this._super();
-        this.init(model, toggleCallback, influenceCallback);
+        this.init(model, toggleCallback, influenceCallback, testingCallback);
     },
-    init:function (model, toggleCallback, influenceCallback) {
+    init:function (model, toggleCallback, influenceCallback, testingCallback) {
         this._super();
 
         // TODO: figure something different out, can only have one listener in the view
@@ -48,6 +49,7 @@ var SideGUILayer = cc.Layer.extend({
         this.boardModel = model;
         this.toggleCallback = toggleCallback;
         this.influenceCallback = influenceCallback;
+        this.testingCallback = testingCallback;
 
         var winSize = cc.director.getWinSize();
         var localSize = winSize.width / 4;
@@ -105,6 +107,22 @@ var SideGUILayer = cc.Layer.extend({
         var notationToggle = new cc.MenuItemToggle( notationOn, notationOff, this.toggleCallback, this)
         notationToggle.setPosition(cc.p(localSize * 3.5, winSize.height * 0.5));
 
+        // Grid toggle button
+        var testOn = new cc.MenuItemSprite(
+            new cc.Sprite(res.notationON_png), // normal state image
+            new cc.Sprite(res.notationON_png) //select state image
+        );
+        testOn.setScale(0.5);
+        var testOff = new cc.MenuItemSprite(
+            new cc.Sprite(res.notationOFF_png), // normal state image
+            new cc.Sprite(res.notationOFF_png) //select state image
+        );
+        testOff.setScale(0.5);
+
+        var testToggle = new cc.MenuItemToggle( testOn, testOff, this.testingCallback, this)
+        testToggle.setPosition(cc.p(localSize * 3.0, winSize.height * 0.6));
+
+
         // Menu button
         var menuButton = new cc.MenuItemSprite(
             new cc.Sprite(res.menuButton_png), // normal state image
@@ -144,7 +162,7 @@ var SideGUILayer = cc.Layer.extend({
         vulnerability_map_button.setScale(0.2);
         vulnerability_map_button.setPosition(cc.p(localSize * 3.7, winSize.height * 0.7));
 
-        var menu = new cc.Menu(notationToggle, menuButton, influence_map_button,
+        var menu = new cc.Menu(notationToggle, testToggle, menuButton, influence_map_button,
             tension_map_button, vulnerability_map_button);  //7. create the menu
         menu.setPosition(cc.p(0,0));
         this.addChild(menu);
