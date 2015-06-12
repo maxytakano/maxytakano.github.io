@@ -12,6 +12,10 @@ var res = {
     select15x15_s_png : "res/menuButtons/select15x15_s.png",
     select19x19_n_png : "res/menuButtons/select19x19_n.png",
     select19x19_s_png : "res/menuButtons/select19x19_s.png",
+    classic_n_png : "res/menuButtons/classic_n.png",
+    classic_s_png : "res/menuButtons/classic_s.png",
+    future_n_png : "res/menuButtons/future_n.png",
+    future_s_png : "res/menuButtons/future_s.png",
 
     // Traditional play stones
     blackStone_png : "res/blackStone3.png",
@@ -28,10 +32,13 @@ var res = {
     // Side bar background
     bamboo_png : "res/bamboo.png",
     // Side bar buttons
+    planOFF_png : "res/planOFF.png",
+    planON_png : "res/planON.png",
     notationOFF_png : "res/notationOFF.png",
     notationON_png : "res/notationON.png",
     menuButton_png : "res/menuButton.png",
     menuButton_s_png : "res/menuButton_s.png",
+
 
     // Board grids with and without letters/numbers
     board9x9_png : "res/boards/board9x9.png",

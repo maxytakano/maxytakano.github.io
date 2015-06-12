@@ -61,8 +61,23 @@ var MenuLayer = cc.Layer.extend({
 		spriteBG.setPosition(centerpos);
 		this.addChild(spriteBG);
 
-		//5.
-		//cc.MenuItemFont.setFontSize(60);
+		//7. Add title label
+		var greenColor = cc.color(132, 182, 121);
+		var whiteColor = cc.color(255, 255, 255);
+		var selectLabel = new cc.LabelTTF("DeepWhite", "Helvetica", 70);
+		selectLabel.setFontFillColor(whiteColor);
+		selectLabel.setPosition(cc.p(winsize.width/2, winsize.height * 0.87));
+		selectLabel.enableStroke(greenColor, 3);
+		this.addChild(selectLabel);
+
+		//7. Add board selection label
+		var greenColor = cc.color(132, 182, 121);
+		var blackColor = cc.color(0, 0, 0);
+		var selectLabel = new cc.LabelTTF("Select A Board Size", "Helvetica", 48);
+		selectLabel.setFontFillColor(blackColor);
+		selectLabel.setPosition(cc.p(winsize.width/2, winsize.height * 0.67));
+		selectLabel.enableStroke(greenColor, 3);
+		this.addChild(selectLabel);
 
 		//6.create a menu and assign onPlay event callback to it
 		var menuItemPlay = new cc.MenuItemSprite(
@@ -70,17 +85,10 @@ var MenuLayer = cc.Layer.extend({
 				new cc.Sprite(res.menuPlayS_png), // select state image
 				this.onPlay, this);
 		var menu = new cc.Menu(menuItemPlay);  //7. create the menu
-		menu.setPosition(cc.p(winsize.width * 0.5, winsize.height * 0.75));
+		menu.setPosition(cc.p(winsize.width * 0.70, winsize.height * 0.20));
 		this.addChild(menu);
 
-		//7. Add board selection label
-		var greenColor = cc.color(132, 182, 121);
-		var blackColor = cc.color(0, 0, 0);
-		var selectLabel = new cc.LabelTTF("Select A Board Size", "Helvetica", 48);
-		selectLabel.setFontFillColor(blackColor);
-		selectLabel.setPosition(cc.p(winsize.width/2, winsize.height * 0.57));
-		selectLabel.enableStroke(greenColor, 3);
-		this.addChild(selectLabel);
+
 
 		// 8. Board selection buttons
 		// Create board selection Sprites
@@ -115,7 +123,7 @@ var MenuLayer = cc.Layer.extend({
 		for (var i = 0; i < boards; i++) {
 			var testSprite = new cc.Sprite(this.boardNames[i]);
 
-			testSprite.setPosition(winsize.width/2 - start + ((sizeX + spacing) * i), winsize.height * 0.4);
+			testSprite.setPosition(winsize.width/2 - start + ((sizeX + spacing) * i), winsize.height * 0.45);
 			testSprite.setScale(scaleFactor);
 			this.buttonSprites[i] = testSprite;
 			this.addChild(testSprite);
@@ -139,24 +147,15 @@ var MenuLayer = cc.Layer.extend({
 
 
 		this.themeNames = [
-			"res/menuButtons/select9x9_n.png",
-			"res/menuButtons/select13x13_n.png"
+			"res/menuButtons/future_n.png",
+			"res/menuButtons/classic_n.png"
 		];
 		this.themeSelectNames = [
-			"res/menuButtons/select9x9_s.png",
-			"res/menuButtons/select13x13_s.png"
+			"res/menuButtons/future_s.png",
+			"res/menuButtons/classic_s.png"
 		];
 		var themes = 2;		// Number of board options
 
-		// Temporary sprite to make correct size buttons.
-		//var setupSprite = new cc.Sprite(res.select13x13_n_png);
-		//setupSprite.setScale(0.7);
-		//var scaleFactor = setupSprite.getScale();
-        //
-		//var sizeX = setupSprite.width * scaleFactor;
-		//var spacing = sizeX / 2;
-		//var splitNumber = (boards / 2) - 0.5;
-		//var start = (splitNumber * sizeX) + (splitNumber * spacing);
 
 		for (var i = 0; i < themes; i++) {
 			var testSprite = new cc.Sprite(this.themeNames[i]);
@@ -175,7 +174,7 @@ var MenuLayer = cc.Layer.extend({
 			this.themeRectangles[i] = cc.rect(boxX - boxWidth / 2, boxY - boxHeight / 2, boxWidth, boxHeight);
 		}
 
-		this.selectTheme(1);
+		this.selectTheme(0);
 
 
 	},

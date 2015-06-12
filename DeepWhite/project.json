@@ -13,6 +13,7 @@
     "jsList" : [
         "src/resource.js",
         "src/app.js",
+        "src/Model/JosekiDictionary.js",
         "src/Model/BoardModel.js",
         "src/Model/InfluenceMap.js",
         "src/Model/TensionMap.js",

@@ -107,20 +107,20 @@ var SideGUILayer = cc.Layer.extend({
         var notationToggle = new cc.MenuItemToggle( notationOn, notationOff, this.toggleCallback, this)
         notationToggle.setPosition(cc.p(localSize * 3.5, winSize.height * 0.5));
 
-        // Grid toggle button
+        // Planning toggle button
         var testOn = new cc.MenuItemSprite(
-            new cc.Sprite(res.notationON_png), // normal state image
-            new cc.Sprite(res.notationON_png) //select state image
+            new cc.Sprite(res.planOFF_png), // normal state image
+            new cc.Sprite(res.planOFF_png) //select state image
         );
         testOn.setScale(0.5);
         var testOff = new cc.MenuItemSprite(
-            new cc.Sprite(res.notationOFF_png), // normal state image
-            new cc.Sprite(res.notationOFF_png) //select state image
+            new cc.Sprite(res.planON_png), // normal state image
+            new cc.Sprite(res.planON_png) //select state image
         );
         testOff.setScale(0.5);
 
         var testToggle = new cc.MenuItemToggle( testOn, testOff, this.testingCallback, this)
-        testToggle.setPosition(cc.p(localSize * 3.0, winSize.height * 0.6));
+        testToggle.setPosition(cc.p(localSize * 3.5, winSize.height * 0.6));
 
 
         // Menu button
@@ -133,6 +133,13 @@ var SideGUILayer = cc.Layer.extend({
         menuButton.setPosition(cc.p(localSize * 3.5, winSize.height * 0.3));
 
 
+        //7. Add title label
+        var blackColor = cc.color(0, 0, 0);
+        var selectLabel = new cc.LabelTTF("Select Influence Mode", "Helvetica", 15);
+        selectLabel.setFontFillColor(blackColor);
+        selectLabel.setPosition(cc.p(localSize * 3.5, winSize.height * 0.76));
+        //selectLabel.enableStroke(greenColor, 3);
+        this.addChild(selectLabel);
 
         ///// Influence Model buttons /////
         // 1. Influence Map button
@@ -166,6 +173,7 @@ var SideGUILayer = cc.Layer.extend({
             tension_map_button, vulnerability_map_button);  //7. create the menu
         menu.setPosition(cc.p(0,0));
         this.addChild(menu);
+
 
 
         //// TODO: figure something different out, can only have one listener in the view
